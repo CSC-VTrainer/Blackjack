@@ -1,0 +1,2 @@
+# Blackjack
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/398bb818118f4a31bb9e7fd48f3260ba)](https://app.codacy.com/gh/CSC-VTrainer/Blackjack?utm_source=github.com&utm_medium=referral&utm_content=CSC-VTrainer/Blackjack&utm_campaign=Badge_Grade_Settings)
