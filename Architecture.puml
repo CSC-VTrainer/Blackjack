@@ -1,0 +1,173 @@
+@startuml
+class Entity {
+	__ private __
+	SDL_Texture *img_
+	int x_
+	int y_
+	int layer_
+}
+
+class Card extends Entity{
+	__ private __
+	CardType type_
+	CardNom nom_
+}
+
+class Dealer extends Entity {
+	unsigned get_deck_size()	
+	__ private __
+	void init_match()
+	void init_deck()
+	void deal()
+	..
+	unsigned current_player_
+	std::vector<Card> deck_
+	std::vector<std::shared_ptr<AbstractPlayer>> players_
+}
+
+class "AbstractPlayer" as AP extends Entity {
+	__ public __
+	bool make_move()
+	const std::vector<Card>& get_hand()
+	__ private __
+	std::vector<Card> hand_
+}
+
+class NPC {
+	__ public __
+	bool make_move()
+}
+
+class "RealPlayer" as RP {
+	__ public __
+	bool make_move()
+	__ private __
+	const unit8_t *& current_key_states_
+}
+
+class Renderer {
+	__ public __
+	void render()
+	void add_entity()
+	__ private __
+	std::multiset<std::weak_ptr<Entity>> rend_set_
+}
+
+Entity o-- Renderer
+Card o-- AP
+Card o-- Dealer
+
+AP <-- RP
+AP <-- NPC
+RP -right[hidden]- NPC
+
+Dealer --o AP
+Dealer -- Renderer
+
+
+note as N1 #red
+	Project relies on a SDL2 library which
+	will provide key/mouse interaction 
+	and rendering.
+end note
+
+note as N2 #orange
+	Example of a game loop:
+	while (true) {
+	    Player->update_key_input()
+	    Dealer->deal()
+	    Renderer->render()
+	}
+end note
+
+note top of Entity
+	Basic game objects which contains all
+	data needed for drawing
+end note
+
+note left of Entity::layer_
+	A variable that defines priority
+	in a render process
+	
+	Greater values mean later rendering
+end note
+
+note left of Card::"CardType type_"
+	Diamonds, hearts, spades and clubs
+end note
+
+note left of Card::"CardNom nom_"
+	Enumerated card nominal: 2 to 10,
+	jack, queen, king and ace
+end note
+
+note top of Dealer
+	Dealer is a main controller of a game.
+	It is responsible for creating a new match,
+	initialising players and managing 
+	"Blackjack" game itself.
+end note
+
+note right of Dealer::init_match
+	Method that defines amount of 
+	players in a game and which of them
+	will be either bots or real players
+end note
+
+note right of Dealer::init_deck
+	Creates a new deck with 52 cards.
+end note
+
+note right of Dealer::"void deal()" 
+	Main function which will called on every iteration 
+	of game loop. Requests a play to a current player and
+	determines the outcome.
+end note
+note left of Dealer::current_player_
+	Player that should play now
+end note
+
+note left of Dealer::"std::vector<Card> deck_"
+	Current deck
+end note
+
+note left of Dealer::players_
+	Player which participate in a game
+end note
+
+note top of AP
+	AbstractPlayer helps us to abstract
+	from whether it's a local NPC or 
+	a possibly remote RealPlayer
+end note
+
+note right of AP::make_move
+	Redirects request to make a 
+	move to either NPC or RealPlayer.
+	Returning value determines whether 
+	a player has decided to take additional
+	card or to pass.
+end note
+
+note left of RP::current_key_states_
+	Referense to an array in which
+	SDL stores key state
+end note
+
+note top of Renderer
+	Object responsible for rendering various 
+	game objects depending on a game state,
+	object positions and render priorities.
+end note
+
+note left of Renderer::rend_set_
+	Data structure for storing registered
+	for rendering entities sorted in order
+	of their layers
+end note
+
+note right of NPC::make_move
+	Simple AI function for playing Blackjack.
+end note
+
+@enduml
