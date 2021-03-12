@@ -5,7 +5,7 @@
 using namespace std;
 
 enum class CardType {
-	CARD_TWO = 0,
+	CARD_TWO = 2,
 	CARD_THREE = 3,
 	CARD_FOUR = 4,
 	CARD_FIVE = 5,
