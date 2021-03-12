@@ -16,16 +16,29 @@ enum class CardType {
 	CARD_ACE
 };
 
+enum class CardSuit {
+    DIAMONDS,
+    HEARTS,
+    SPADES,
+    CLUBS
+};
+
 class Card {
 public:
-	Card(CardType type):
-		type_(type)
-	{}
+	Card(CardType type, CardSuit suit) {
+        type_ = type;
+        suit_ = suit;
+	}
 
-	CardType get_card_type() const {
-		return type_;
+	CardType get_card_type() {
+	    return type_;
+	}
+
+	CardSuit get_card_suit() {
+        return suit_;
 	}
 
 private:
-	CardType type_;
+    CardType type_;
+    CardSuit suit_;
 };
