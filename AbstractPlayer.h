@@ -1,11 +1,14 @@
+#pragma once
+
 #include "Card.h"
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
 enum class PlayerDecisionType {
-    PASS,
-    GET
+    PASS = 0,
+    GET = 1
 };
 
 class AbstractPlayer {
@@ -14,16 +17,24 @@ public:
         hand_.push_back(card);
     }
 
-    void get_hand() {
+    vector<Card> get_hand() {
         return hand_;
     }
 
+    void print_hand() {
+        for (int i = 0; i < hand_.size(); ++i) {
+            cout << hand_[i].get_card_suit() << ' ' << hand_[i].get_card_type() << endl;
+        }
+        cout << hand_.size() << endl;
+    }
+
+
     void pass() {
-        state_ = PlayerDecisionType.PASS;
+        state_ = PlayerDecisionType::PASS;
     }
 
     void get() {
-        state_ = PlayerDecisionType.GET;
+        state_ = PlayerDecisionType::GET;
     }
 
 private:
