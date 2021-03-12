@@ -14,6 +14,10 @@ public:
         init_deck();
     }
 
+    vector<Card> get_hand() {
+	    return hand_;
+	}
+
     void receive_card(Card card) {
         hand_.push_back(card);
     }
@@ -29,6 +33,19 @@ public:
             cout << deck_[i].get_card_suit() << ' ' << deck_[i].get_card_type() << endl;
         }
         cout << deck_.size() << endl;
+	}
+
+	void print_secret_hand() {
+	    if (hand_.size() == 2) {
+            cout << hand_[0].get_card_suit() << ' ' << hand_[0].get_card_type() << endl;
+            cout << "*" << endl;
+	    }
+	}
+
+	void print_full_hand() {
+        for (int i = 0; i < hand_.size(); ++i) {
+            cout << hand_[i].get_card_suit() << ' ' << hand_[i].get_card_type() << endl;
+        }
 	}
 
 	void shuffle_deck() {
