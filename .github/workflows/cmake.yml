@@ -20,6 +20,6 @@ jobs:
     - name: make
       run: cd build && make
     - name: Run Test
-      run:  ${{github.workspace}}/test/blackjack_test
+      run:  ${{github.workspace}}/build/test/blackjack_test
       
 
