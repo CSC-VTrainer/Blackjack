@@ -4,12 +4,13 @@
 ![test](https://github.com/CSC-VTrainer/Blackjack/actions/workflows/test.yml/badge.svg)
 
 This is simple BlackJack game! 
+![alt text](media/vis.png "Vis")
 
 # Features
 Current list of features include: 
 * Playing with any amount of other players, but without AI yet
 * CLI functionality
-* Automated tests and builds
+* Automated tests, builds and code quality
 
 Future features can be tracked via issues
 
