@@ -1,4 +1,4 @@
-name: CMake
+name: build
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -19,7 +19,6 @@ jobs:
       run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Werror" ..
     - name: make
       run: cd build && make
-    - name: Run Test
-      run:  ${{github.workspace}}/build/test/blackjack_test
+
       
 
