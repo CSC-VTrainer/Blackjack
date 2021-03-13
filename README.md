@@ -22,5 +22,5 @@ Requirements:
 Steps:
 1. in the root of project ```cmake .```
 2. ```make```
-3. ```./src/blackjack_run
+3. ```./src/blackjack_run```
 4. Enjoy!
