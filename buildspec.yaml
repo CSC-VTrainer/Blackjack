@@ -4,7 +4,7 @@ phases:
   install:
     commands:
         - sudo apt-get update && sudo apt-get install -y python3-pip
-        - python3 -m pip install -r requirements.txt
+        - python3 -m pip install -r ./web/requirements.txt
         - sudo apt-get update && sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && sudo cp lib/libgtest* /usr/lib/ && sudo mkdir /usr/local/lib/googletest && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
 
   build:
