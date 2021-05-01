@@ -12,8 +12,7 @@ phases:
       - echo Compiling the Python code...
       - echo installing deps for blackjack
       - echo compiling blackjack code
-      - mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Werror" ..
-      - cd build && make
+      - mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Werror" .. && make
   post_build:
     commands:
       - echo Build completed on `date`
