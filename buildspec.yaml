@@ -3,9 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
-        - curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py
-        - python get-pip.py
-        - python -m pip install -r requirements.txt
+        - sudo apt-get install python3
+        - python3 -m pip install -r requirements.txt
         - sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && sudo cp lib/libgtest* /usr/lib/ && sudo mkdir /usr/local/lib/googletest && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
 
   build:
