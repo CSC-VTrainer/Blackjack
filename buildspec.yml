@@ -26,4 +26,5 @@ artifacts:
     - .jenkins/start.sh
     - .jenkins/shutdown.py
     - web/requirements.txt
+    - .jenkins/requirements.txt
     - build/src/blackjack_run
