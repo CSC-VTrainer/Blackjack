@@ -18,12 +18,12 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - app.py
+    - web/app.py
     - appspec.yml
-    - templates/base.html
-    - templates/index.html
-    - scripts/init.sh
-    - scripts/start.sh
-    - scripts/shutdown.py
-    - scripts/requirements.txt
+    - web/templates/base.html
+    - web/templates/index.html
+    - .jenkins/init.sh
+    - .jenkins/start.sh
+    - .jenkins/shutdown.py
+    - web/requirements.txt
     - build/src/blackjack_run
