@@ -1,0 +1,18 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /web/
+hooks:
+  AfterInstall:
+    - location: .jenkins/init.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: .jenkins/start.sh
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: .jenkins/shutdown.py
+      timeout: 300
+      runas: root
