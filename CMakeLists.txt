@@ -14,13 +14,13 @@
 # set(SOURCE_FILES src/main.cpp ${HEADER_FILES})
 
 # add_executable(blackjack ${SOURCE_FILES})
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 2.7)
 project(blackjack)
 
-set(CMAKE_CXX_STANDARD 14)
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 include_directories(src)
 include_directories(include)
 
 add_subdirectory(src)
-add_subdirectory(test)
+# add_subdirectory(test)

@@ -1,0 +1,30 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+        - sudo apt-get update && sudo apt-get install -y python3-pip cmake g++
+        - python3 -m pip install -r ./web/requirements.txt
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Compiling the Python code...
+      - echo installing deps for blackjack
+      - echo compiling blackjack code
+      - mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Werror" .. && make
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - web/app.py
+    - appspec.yml
+    - web/templates/base.html
+    - web/templates/index.html
+    - .jenkins/init.sh
+    - .jenkins/start.sh
+    - .jenkins/shutdown.py
+    - web/requirements.txt
+    - .jenkins/requirements.txt
+    - build/src/blackjack_run
